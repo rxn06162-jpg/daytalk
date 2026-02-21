@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>DayTalk</title>
+  <meta name="description" content="1日一言、気分を記録するアプリ">
+  <meta name="theme-color" content="#f5a623">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="DayTalk">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <header>
+    <h1>☀️ DayTalk</h1>
+    <span class="header-date" id="header-date"></span>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-page="page-today">今日</button>
+    <button class="tab-btn" data-page="page-history">記録一覧</button>
+  </nav>
+
+  <main>
+
+    <!-- 今日ページ -->
+    <div class="page active" id="page-today">
+
+      <!-- 保存済み表示 -->
+      <div id="saved-section" class="already-saved" style="display:none">
+        <div class="saved-mood" id="saved-mood"></div>
+        <div class="saved-comment" id="saved-comment"></div>
+        <button class="edit-btn" id="edit-btn">編集する</button>
+      </div>
+
+      <!-- 入力フォーム -->
+      <div id="form-section">
+        <div class="today-card">
+          <h2>📝 今日の気分と一言</h2>
+
+          <span class="mood-label">気分を選んでな</span>
+          <div class="mood-grid" id="mood-grid"></div>
+
+          <span class="comment-label">一言（140文字まで・任意）</span>
+          <textarea
+            id="comment"
+            placeholder="今日はどんな日やった？"
+            maxlength="200"
+          ></textarea>
+          <div class="char-count" id="char-count">0 / 140文字</div>
+
+          <button class="save-btn" id="save-btn" disabled>保存する</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 履歴ページ -->
+    <div class="page" id="page-history">
+      <div class="history-list" id="history-list"></div>
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

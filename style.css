@@ -1,0 +1,361 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #f5a623;
+  --primary-dark: #d4891a;
+  --bg: #fef9f0;
+  --card: #ffffff;
+  --text: #333333;
+  --text-sub: #888888;
+  --border: #e8e0d0;
+  --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(245,166,35,0.3);
+}
+
+header h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.header-date {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+/* タブ */
+.tabs {
+  display: flex;
+  background: var(--card);
+  border-bottom: 2px solid var(--border);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.tab-btn.active {
+  color: var(--primary-dark);
+  font-weight: 700;
+  border-bottom: 3px solid var(--primary);
+  margin-bottom: -2px;
+}
+
+/* メインコンテンツ */
+main {
+  flex: 1;
+  padding: 16px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+/* 今日の登録フォーム */
+.today-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 16px;
+}
+
+.today-card h2 {
+  font-size: 1rem;
+  color: var(--text-sub);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 気分アイコン選択 */
+.mood-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mood-btn {
+  aspect-ratio: 1;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.mood-btn span.label {
+  font-size: 0.55rem;
+  color: var(--text-sub);
+  margin-top: 2px;
+}
+
+.mood-btn:active {
+  transform: scale(0.95);
+}
+
+.mood-btn.selected {
+  border-color: var(--primary);
+  background: #fff8ed;
+  box-shadow: 0 0 0 2px rgba(245,166,35,0.3);
+}
+
+/* テキストエリア */
+.comment-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 8px;
+  display: block;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--text);
+  resize: none;
+  transition: border-color 0.2s;
+  line-height: 1.6;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: white;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin-top: 4px;
+}
+
+.char-count.over {
+  color: #e74c3c;
+}
+
+/* 保存ボタン */
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  letter-spacing: 0.05em;
+}
+
+.save-btn:active {
+  background: var(--primary-dark);
+  transform: scale(0.98);
+}
+
+.save-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 今日の記録済み表示 */
+.already-saved {
+  background: #f0faf0;
+  border: 2px solid #a8d8a8;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.already-saved .saved-mood {
+  font-size: 3rem;
+  margin-bottom: 8px;
+}
+
+.already-saved .saved-comment {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.edit-btn {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary-dark);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.edit-btn:active {
+  background: var(--primary);
+  color: white;
+}
+
+/* 履歴リスト */
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.history-mood {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.history-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.history-date {
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin-bottom: 4px;
+}
+
+.history-comment {
+  font-size: 0.9rem;
+  color: var(--text);
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.history-delete {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 4px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.history-delete:active {
+  color: #e74c3c;
+}
+
+.empty-msg {
+  text-align: center;
+  color: var(--text-sub);
+  padding: 40px 20px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.empty-msg .empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 12px;
+}
+
+/* トースト通知 */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+  z-index: 100;
+  white-space: nowrap;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+}

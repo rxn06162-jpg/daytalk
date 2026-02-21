@@ -1,0 +1,17 @@
+{
+  "name": "DayTalk",
+  "short_name": "DayTalk",
+  "description": "1日一言、気分を記録するアプリ",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fef9f0",
+  "theme_color": "#f5a623",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
